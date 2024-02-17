@@ -329,7 +329,9 @@
         <nav class="navbar">
             <div class="logo_item">
                 <i class="bx bx-menu" id="sidebarOpen"></i>
-                <img src="https://lh5.googleusercontent.com/p/AF1QipPiYmkVeb7iDo4wxqyNi2LblGhIdSqUpJI5j7kJ=w160-h160-k-no" alt="Logo DMRprog"></i>DMRfact
+                <img src="https://lh5.googleusercontent.com/p/AF1QipPiYmkVeb7iDo4wxqyNi2LblGhIdSqUpJI5j7kJ=w160-h160-k-no"
+                    alt="Logo DMRprog"></i>DMRfact
+                {{-- <img src="{{ URL('images/iconDmrprog.png') }}" alt="Logo DMRprog"></i>DMRfact --}}
             </div>
 
             <div class="search_bar">
@@ -350,38 +352,31 @@
                 <ul class="menu_items">
                     <div class="menu_title menu_dahsboard"></div>
                     <!-- duplicate or remove this li tag if you want to add or remove navlink with submenu -->
-                    <!-- start -->
+                    <!-- Start -->
                     <li class="item">
-                        <div href="#" class="nav_link submenu_item">
+                        <a href="{{ route('home') }}" class="nav_link">
                             <span class="navlink_icon">
                                 <i class="bx bx-home-alt"></i>
                             </span>
                             <span class="navlink">Home</span>
-                            <i class="bx bx-chevron-right arrow-left"></i>
-                        </div>
-
-                        <ul class="menu_items submenu">
-                            <a href="#" class="nav_link sublink">Nav Sub Link</a>
-                            <a href="#" class="nav_link sublink">Nav Sub Link</a>
-                            <a href="#" class="nav_link sublink">Nav Sub Link</a>
-                            <a href="#" class="nav_link sublink">Nav Sub Link</a>
-                        </ul>
+                        </a>
                     </li>
-                    <!-- end -->
+                    <!-- End -->
+
 
                     <!-- duplicate this li tag if you want to add or remove  navlink with submenu -->
                     <!-- start -->
                     <li class="item">
                         <div href="#" class="nav_link submenu_item">
                             <span class="navlink_icon">
-                                <i class="bx bx-grid-alt"></i>
+                                <i class="bx bx-user"></i>
                             </span>
-                            <span class="navlink">Overview</span>
+                            <span class="navlink">Client</span>
                             <i class="bx bx-chevron-right arrow-left"></i>
                         </div>
 
                         <ul class="menu_items submenu">
-                            <a href="#" class="nav_link sublink">Nav Sub Link</a>
+                            <a href="{{ route('clients.create') }}" class="nav_link sublink">New Client</a>
                             <a href="#" class="nav_link sublink">Nav Sub Link</a>
                             <a href="#" class="nav_link sublink">Nav Sub Link</a>
                             <a href="#" class="nav_link sublink">Nav Sub Link</a>
@@ -466,7 +461,7 @@
                 </ul>
 
                 <!-- Sidebar Open / Close -->
-                <div class="bottom_content">
+                {{-- <div class="bottom_content">
                     <div class="bottom expand_sidebar">
                         <span> Expand</span>
                         <i class='bx bx-log-in'></i>
@@ -475,12 +470,12 @@
                         <span> Collapse</span>
                         <i class='bx bx-log-out'></i>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </nav>
     </div>
     <!-- End of Sidebar Area -->
-    <div class="container">
+    <div class="">
         @yield('content')
     </div>
 
@@ -494,12 +489,12 @@
         const sidebarExpand = document.querySelector(".expand_sidebar");
         sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
 
-        sidebarClose.addEventListener("click", () => {
-            sidebar.classList.add("close", "hoverable");
-        });
-        sidebarExpand.addEventListener("click", () => {
-            sidebar.classList.remove("close", "hoverable");
-        });
+        // sidebarClose.addEventListener("click", () => {
+        //     sidebar.classList.add("close", "hoverable");
+        // });
+        // sidebarExpand.addEventListener("click", () => {
+        //     sidebar.classList.remove("close", "hoverable");
+        // });
 
         sidebar.addEventListener("mouseenter", () => {
             if (sidebar.classList.contains("hoverable")) {
@@ -542,8 +537,8 @@
     {{-- bootstarp  cdn link  --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
-</script>
+
+    </script>
 </body>
 
 </html>
