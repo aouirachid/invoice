@@ -30,8 +30,18 @@
         }
 
         body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            /* Ensure the body takes the full height of the viewport */
             background-color: #e7f2fd;
             transition: all 0.5s ease;
+        }
+
+        .content {
+
+            flex-grow: 1;
+            /* Allow the content div to grow and take the remaining space */
         }
 
         body.dark {
@@ -377,7 +387,7 @@
 
                         <ul class="menu_items submenu">
                             <a href="{{ route('clients.create') }}" class="nav_link sublink">New Client</a>
-                            <a href="#" class="nav_link sublink">Nav Sub Link</a>
+                            <a href="{{ route('clients.index') }}" class="nav_link sublink">List Client</a>
                             <a href="#" class="nav_link sublink">Nav Sub Link</a>
                             <a href="#" class="nav_link sublink">Nav Sub Link</a>
                         </ul>
@@ -475,7 +485,7 @@
         </nav>
     </div>
     <!-- End of Sidebar Area -->
-    <div class="">
+    <div class="content">
         @yield('content')
     </div>
 
@@ -487,7 +497,7 @@
         const sidebarOpen = document.querySelector("#sidebarOpen");
         const sidebarClose = document.querySelector(".collapse_sidebar");
         const sidebarExpand = document.querySelector(".expand_sidebar");
-        sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+        // sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
 
         // sidebarClose.addEventListener("click", () => {
         //     sidebar.classList.add("close", "hoverable");

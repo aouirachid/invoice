@@ -18,4 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 })->name( 'home' );
 
-Route::get('/new-client/create',[ClientController::class,'create'])->name('clients.create');
+Route::get('/clients/create',[ClientController::class,'create'])->name('clients.create');
+
+Route::post('/clienst/store',[ClientController::class,'store'])->name('clients.store');
+
+Route::get('/clients',[ClientController::class,'index'])->name('clients.index') ;
+
+Route::put('/clients/{clients}',[ClientController::class,'update'])->name('clients.update');
+
+Route::get('/clients/{clients}/edit',[ClientController::class,'edit'])->name('clients.edit');
+
+Route::get('/clients/{clients}',[ClientController::class,'show'])->name('clients.show');
