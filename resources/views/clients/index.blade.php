@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('title')
     List Client
 @endsection
@@ -42,29 +41,34 @@
             </thead>
             <tbody>
                 @foreach ($clients as $client)
-                <tr>
-                   
-                        <td>{{$client->denomenation}}</td>
-                        <td>{{$client->ice}}</td>
-                        <td>{{$client->address}}</td>
-                        <td>{{$client->tel}}</td>
-                        <td>{{$client->email}}</td>
-                        <td>{{$client->city}}</td>
-                        <td>{{$client->tp}}</td>
-                        <td>{{$client->cnss}}</td>
-                        <td>{{$client->idf}}</td>
-                        <td>{{$client->fullName}}</td>
-                        <td>{{$client->telRes}}</td>
-                        <td>{{$client->emailRes}}</td>
-                        <td>
-                            <a href="{{ route('clients.show', $client->id) }}" class="btn btn-primary" title="show"><i class='bx bx-low-vision' ></i></a>
-                            <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-success" title="edit"><i class='bx bx-edit-alt'></i></a>
-                        </td>
-                   
+                    <tr>
 
-                </tr>
+                        <td>{{ $client->denomenation }}</td>
+                        <td>{{ $client->ice }}</td>
+                        <td>{{ $client->address }}</td>
+                        <td>{{ $client->tel }}</td>
+                        <td>{{ $client->email }}</td>
+                        <td>{{ $client->city }}</td>
+                        <td>{{ $client->tp }}</td>
+                        <td>{{ $client->cnss }}</td>
+                        <td>{{ $client->idf }}</td>
+                        <td>{{ $client->fullName }}</td>
+                        <td>{{ $client->telRes }}</td>
+                        <td>{{ $client->emailRes }}</td>
+                        <td>
+                            <!-- Button to trigger the pop-up modal -->
+                            <a href="{{ route('clients.show', $client->id) }}">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"data-target="#clientDetailsModal"
+                                class="btn btn-primary" title="show"><i class='bx bx-low-vision'></i></button>
+                            </a>
+                            <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-success" title="edit"><i
+                                    class='bx bx-edit-alt'></i></a>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+    
 @endsection
+

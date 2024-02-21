@@ -11,71 +11,80 @@ class ClientController extends Controller
     {
         return view('clients.create');
     }
-    function store(){
-        
-        request()->validate([
-            'denomenation'=>['required','min:3'],
-            'ice'=>['required','min:10'],
-            'address'=>['required'],
-            'tel'=>['required'],
-            'email'=>['required','Email'],
-            'city'=>['required'],
-            'state'=>['required'],
-            'zipcode'=>['required'],
-            'tp'=>['required'],
-            'cnss'=>['required'],
-            'idf'=>['required'],
-            'fullName'=>['required'],
-            'telRes'=>['required'],
-            'emailRes'=>['required'],
-        ]);
+    function store()
+    {
 
+        request()->validate([
+            'denomenation' => ['required','unique:clients', 'min:3'],
+            'ice' => ['required', 'min:10'],
+            'address' => ['required'],
+            'tel' => ['required'],
+            'email' => ['required', 'Email'],
+            'city' => ['required'],
+            'state' => ['required'],
+            'zipcode' => ['required'],
+            'tp' => ['required'],
+            'cnss' => ['required'],
+            'idf' => ['required'],
+            'fullName' => ['required'],
+            'telRes' => ['required'],
+            'emailRes' => ['required'],
+        ]);
+        // Check if the 'denomenation' already exists
+        if (Client::where('denomenation', request()->denomenation)->exists()) {
+            // Return an error response if 'denomenation' already exists
+            return redirect()->back()->withInput()->withErrors(['denomenation' => 'The denomenation already exists.']);
+        }
+        // If validation passes and 'denomenation' is unique, create the new record
         Client::create([
             'denomenation' => request()->denomenation,
             'ice' => request()->ice,
             'address' => request()->address,
             'tel' => request()->tel,
             'email' => request()->email,
-            'city'=>request()->city,
-            'state'=>request()->state,
-            'zipcode'=>request()->zipcode,
-            'tp'=>request()->tp,
-            'cnss'=>request()->cnss,
-            'idf'=>request()->idf,
-            'fullName'=> request()->fullName,
-            'telRes'=>request()->telRes,
-            'emailRes'=>request()->emailRes,
+            'city' => request()->city,
+            'state' => request()->state,
+            'zipcode' => request()->zipcode,
+            'tp' => request()->tp,
+            'cnss' => request()->cnss,
+            'idf' => request()->idf,
+            'fullName' => request()->fullName,
+            'telRes' => request()->telRes,
+            'emailRes' => request()->emailRes,
         ]);
+
         return to_route('clients.index');
     }
-    function index(){
+    function index()
+    {
         $clients = Client::all();
-        return view('clients.index',['clients'=>$clients]);
+        return view('clients.index', ['clients' => $clients]);
     }
-    function edit($client)  {
+    function edit($client)
+    {
         $singleClientFromDB = Client::findOrfail($client);
-        return view('clients.edit',['client'=>$singleClientFromDB]);
+        return view('clients.edit', ['client' => $singleClientFromDB]);
     }
     function update($clientId)
     {
         //we validate the input 
         request()->validate([
-            'denomenation'=>['required','min:3'],
-            'ice'=>['required','min:10'],
-            'address'=>['required'],
-            'tel'=>['required'],
-            'email'=>['required','Email'],
-            'city'=>['required'],
-            'state'=>['required'],
-            'zipcode'=>['required'],
-            'tp'=>['required'],
-            'cnss'=>['required'],
-            'idf'=>['required'],
-            'fullName'=>['required'],
-            'telRes'=>['required'],
-            'emailRes'=>['required'],
+            'denomenation' => ['required', 'min:3'],
+            'ice' => ['required', 'min:10'],
+            'address' => ['required'],
+            'tel' => ['required'],
+            'email' => ['required', 'Email'],
+            'city' => ['required'],
+            'state' => ['required'],
+            'zipcode' => ['required'],
+            'tp' => ['required'],
+            'cnss' => ['required'],
+            'idf' => ['required'],
+            'fullName' => ['required'],
+            'telRes' => ['required'],
+            'emailRes' => ['required'],
         ]);
-        
+
         $singleClientFromDB = Client::find($clientId);
         $singleClientFromDB->update([
             'denomenation' => request()->denomenation,
@@ -83,18 +92,22 @@ class ClientController extends Controller
             'address' => request()->address,
             'tel' => request()->tel,
             'email' => request()->email,
-            'city'=>request()->city,
-            'state'=>request()->state,
-            'zipcode'=>request()->zipcode,
-            'tp'=>request()->tp,
-            'cnss'=>request()->cnss,
-            'idf'=>request()->idf,
-            'fullName'=> request()->fullName,
-            'telRes'=>request()->telRes,
-            'emailRes'=>request()->emailRes,
+            'city' => request()->city,
+            'state' => request()->state,
+            'zipcode' => request()->zipcode,
+            'tp' => request()->tp,
+            'cnss' => request()->cnss,
+            'idf' => request()->idf,
+            'fullName' => request()->fullName,
+            'telRes' => request()->telRes,
+            'emailRes' => request()->emailRes,
         ]);
         //dd($singlePostFromDB->id);
         return to_route('clients.index', $clientId);
-        
+    }
+    public function show($clientId)
+    {
+        $singleclientFromDB = Client::findOrfail($clientId);
+        return view('clients.show', ['client' => $singleclientFromDB]);
     }
 }

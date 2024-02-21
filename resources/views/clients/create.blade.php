@@ -50,6 +50,8 @@
                 <div class="col-md-6">
                   <label for="inputdenomenation4" class="form-label">Denomenation</label>
                   <input type="text" name="denomenation" value="{{old('denomenation')}}" class="form-control" id="inputdenomenation4">
+                      
+                  @enderror
                 </div>
                 <div class="col-md-6">
                   <label for="inputPasswordice4" class="form-label">ice</label>
