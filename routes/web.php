@@ -29,5 +29,3 @@ Route::put('/clients/{clients}',[ClientController::class,'update'])->name('clien
 Route::get('/clients/{clients}/edit',[ClientController::class,'edit'])->name('clients.edit');
 
 Route::get('/clients/{clients}',[ClientController::class,'show'])->name('clients.show');
-
-Route::get('/clients/{clients}',[ClientController::class,'show'])->name('clients.show');

@@ -42,7 +42,7 @@
         </div>
     @endif
     <div class="container mt-5 shadow-lg p-3 mb-5 bg-white rounded">
-            <form class="row g-3" method="POST" action="{{ route('clients.update',$client->id) }}">
+            <form class="row g-3" method="POST" action="{{ route('clients.update',$client->id) }}" enctype="multipart/form-data">
               @csrf
               @method('put')
                 <h5>
@@ -95,10 +95,14 @@
                   <label for="inputif" class="form-label">If</label>
                   <input type="text" name="idf" value="{{$client->idf}}" class="form-control" id="inputif">
                 </div>
+                <div class="form-group">
+                  <label for="logo">Company Logo:</label>
+                  <input type="file" name="logo" id="logo" value="{{$client->image_path}}" class="form-control">
+              </div>
                 <h5 class="mt-4">
                     Responsable Information <hr>
                 </h5>
-                 <div class="col-6">
+                <div class="col-6">
                   <label for="inputfullName" class="form-label">Full Name</label>
                   <input type="text" name="fullName" value="{{$client->fullName}}" class="form-control" id="inputfullName" placeholder="Aoui Rachid">
                 </div>

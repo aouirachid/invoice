@@ -42,16 +42,14 @@
         </div>
     @endif
     <div class="container mt-5 shadow-lg p-3 mb-5 bg-white rounded">
-            <form class="row g-3" method="POST" action="{{ route('clients.store') }}">
+            <form class="row g-3" method="POST" action="{{ route('clients.store') }}" enctype="multipart/form-data">
               @csrf
                 <h5>
                     Company Information <hr>
                 </h5>
                 <div class="col-md-6">
-                  <label for="inputdenomenation4" class="form-label">Denomenation</label>
+                  <label for="inputdenomenation4" class="form-label">Denomination</label>
                   <input type="text" name="denomenation" value="{{old('denomenation')}}" class="form-control" id="inputdenomenation4">
-                      
-                  @enderror
                 </div>
                 <div class="col-md-6">
                   <label for="inputPasswordice4" class="form-label">ice</label>
@@ -96,6 +94,10 @@
                   <label for="inputif" class="form-label">If</label>
                   <input type="text" name="idf" value="{{old('idf')}}" class="form-control" id="inputif">
                 </div>
+                <div class="form-group">
+                  <label for="logo">Company Logo:</label>
+                  <input type="file" name="logo" id="logo" value="{{old('logo')}}" class="form-control">
+              </div>
                 <h5 class="mt-4">
                     Responsable Information <hr>
                 </h5>

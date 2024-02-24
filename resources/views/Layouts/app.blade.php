@@ -341,7 +341,7 @@
 <body>
     <div>
         <!-- navbar -->
-        <nav class="navbar">
+        <nav class="navbar ">
             <div class="logo_item">
                 <i class="bx bx-menu" id="sidebarOpen"></i>
                 <img src="https://lh5.googleusercontent.com/p/AF1QipPiYmkVeb7iDo4wxqyNi2LblGhIdSqUpJI5j7kJ=w160-h160-k-no"
@@ -500,14 +500,14 @@
         const sidebarOpen = document.querySelector("#sidebarOpen");
         const sidebarClose = document.querySelector(".collapse_sidebar");
         const sidebarExpand = document.querySelector(".expand_sidebar");
-        // sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+        sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
 
-        // sidebarClose.addEventListener("click", () => {
+        //  sidebarClose.addEventListener("click", () => {
         //     sidebar.classList.add("close", "hoverable");
-        // });
-        // sidebarExpand.addEventListener("click", () => {
+        //  });
+        //  sidebarExpand.addEventListener("click", () => {
         //     sidebar.classList.remove("close", "hoverable");
-        // });
+        //  });
 
         sidebar.addEventListener("mouseenter", () => {
             if (sidebar.classList.contains("hoverable")) {

@@ -13,7 +13,6 @@ class ClientController extends Controller
     }
     function store()
     {
-
         request()->validate([
             'denomenation' => ['required','unique:clients', 'min:3'],
             'ice' => ['required', 'min:10'],
@@ -26,6 +25,7 @@ class ClientController extends Controller
             'tp' => ['required'],
             'cnss' => ['required'],
             'idf' => ['required'],
+            'logo' => ['image','mimes:jpeg,png,jpg,gif','max:2048'],
             'fullName' => ['required'],
             'telRes' => ['required'],
             'emailRes' => ['required'],
@@ -34,6 +34,14 @@ class ClientController extends Controller
         if (Client::where('denomenation', request()->denomenation)->exists()) {
             // Return an error response if 'denomenation' already exists
             return redirect()->back()->withInput()->withErrors(['denomenation' => 'The denomenation already exists.']);
+        }
+        // Handle image upload
+        $logoPath = null;
+        try {
+            $logoPath = request()->file('logo')->store('company_logo', 'public');
+        } catch (\Exception $e) {
+            // Handle the error, log it, or provide feedback to the user
+            return redirect()->back()->withInput()->withErrors(['logo' => 'Error uploading the logo.']);
         }
         // If validation passes and 'denomenation' is unique, create the new record
         Client::create([
@@ -48,12 +56,12 @@ class ClientController extends Controller
             'tp' => request()->tp,
             'cnss' => request()->cnss,
             'idf' => request()->idf,
+            'image_path' => $logoPath,
             'fullName' => request()->fullName,
             'telRes' => request()->telRes,
             'emailRes' => request()->emailRes,
         ]);
-
-        return to_route('clients.index');
+        return to_route('clients.index')->with('success', 'Client created successfully.');
     }
     function index()
     {
@@ -80,11 +88,19 @@ class ClientController extends Controller
             'tp' => ['required'],
             'cnss' => ['required'],
             'idf' => ['required'],
+            'logo' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
             'fullName' => ['required'],
             'telRes' => ['required'],
             'emailRes' => ['required'],
         ]);
-
+        // Handle image upload
+        $logoPath = null;
+        try {
+            $logoPath = request()->file('logo')->store('company_logo', 'public');
+        } catch (\Exception $e) {
+            // Handle the error, log it, or provide feedback to the user
+            return redirect()->back()->withInput()->withErrors(['logo' => 'Error uploading the logo.' ]);
+        }
         $singleClientFromDB = Client::find($clientId);
         $singleClientFromDB->update([
             'denomenation' => request()->denomenation,
@@ -98,6 +114,7 @@ class ClientController extends Controller
             'tp' => request()->tp,
             'cnss' => request()->cnss,
             'idf' => request()->idf,
+            'image_path' => $logoPath,
             'fullName' => request()->fullName,
             'telRes' => request()->telRes,
             'emailRes' => request()->emailRes,

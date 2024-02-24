@@ -20,6 +20,7 @@ class Client extends Model
         'tp',
         'cnss',
         'idf',
+        'image_path',
         'fullName',
         'telRes',
         'emailRes',
