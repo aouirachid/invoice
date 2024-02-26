@@ -365,7 +365,7 @@
         <nav class="sidebar">
             <div class="menu_content">
                 <ul class="menu_items">
-                    <div class="menu_title menu_dahsboard"></div>
+                    
                     <!-- duplicate or remove this li tag if you want to add or remove navlink with submenu -->
                     <!-- Start -->
                     <li class="item">
@@ -377,8 +377,7 @@
                         </a>
                     </li>
                     <!-- End -->
-
-
+                    <hr>
                     <!-- duplicate this li tag if you want to add or remove  navlink with submenu -->
                     <!-- start -->
                     <li class="item">
@@ -389,15 +388,31 @@
                             <span class="navlink">Client</span>
                             <i class="bx bx-chevron-right arrow-left"></i>
                         </div>
-
                         <ul class="menu_items submenu">
                             <a href="{{ route('clients.create') }}" class="nav_link sublink">New Client</a>
-                            <a href="{{ route('clients.index') }}" class="nav_link sublink">List Client</a>
+                            <a href="{{ route('clients.index') }}" class="nav_link sublink">Client List</a>
+                        </ul>
+                    </li>
+                    <!-- end -->
+                    <hr>
+                    <!-- start -->
+                    <li class="item">
+                        <div href="#" class="nav_link submenu_item">
+                            <span class="navlink_icon">
+                                <i class="bx bx-cog"></i>
+                            </span>
+                            <span class="navlink">Services</span>
+                            <i class="bx bx-chevron-right arrow-left"></i>
+                        </div>
+
+                        <ul class="menu_items submenu">
+                            <a href="{{ route('services.create') }}" class="nav_link sublink">New Service</a>
+                            <a href="{{ route('services.index') }}" class="nav_link sublink">Service List</a>
                         </ul>
                     </li>
                     <!-- end -->
                 </ul>
-
+{{-- 
                 <ul class="menu_items">
                     <div class="menu_title menu_editor"></div>
                     <!-- duplicate these li tag if you want to add or remove navlink only -->
@@ -471,7 +486,7 @@
                             <span class="navlink">Features</span>
                         </a>
                     </li>
-                </ul>
+                </ul> --}}
 
                 <!-- Sidebar Open / Close -->
                 {{-- <div class="bottom_content">
