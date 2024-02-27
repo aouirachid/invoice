@@ -13,7 +13,65 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
+@section('sidebar')
+<div class="sidebar">
+  <nav class="sidebar">
+      <nav class="sidebar">
+          <div class="menu_content">
+              <ul class="menu_items">
+                  <!-- duplicate or remove this li tag if you want to add or remove navlink with submenu -->
+                  <!-- Start -->
+                  <li class="item">
+                      <a href="{{ route('home') }}" class="nav_link">
+                          <span class="navlink_icon">
+                              <i class="bx bx-home-alt"></i>
+                          </span>
+                          <span class="navlink">Home</span>
+                      </a>
+                  </li>
+                  <!-- End -->
+                  <hr>
+                  <!-- duplicate this li tag if you want to add or remove  navlink with submenu -->
+                  <!-- start -->
+                  <li class="item">
+                      <div href="#" class="nav_link submenu_item">
+                          <span class="navlink_icon">
+                              <i class="bx bx-group"></i>
+                          </span>
+                          <span class="navlink">Client</span>
+                          <i class="bx bx-chevron-right arrow-left"></i>
+                      </div>
+                      <ul class="menu_items submenu">
+                          <a href="{{ route('clients.create') }}" class="nav_link sublink">New Client</a>
+                          <a href="{{ route('clients.index') }}" class="nav_link sublink">Client List</a>
+                      </ul>
+                  </li>
+                  <!-- end -->
+                  <hr>
+                  <!-- start -->
+                  <li class="item">
+                      <div href="#" class="nav_link submenu_item">
+                          <span class="navlink_icon">
+                              <i class="bx bx-cog"></i>
+                          </span>
+                          <span class="navlink">Services</span>
+                          <i class="bx bx-chevron-right arrow-left"></i>
+                      </div>
 
+                      <ul class="menu_items submenu">
+                          <a href="{{ route('services.create') }}" class="nav_link sublink">New
+                              Service</a>
+                          <a href="{{ route('services.index') }}" class="nav_link sublink">Service
+                              List</a>
+                      </ul>
+                  </li>
+                  <!-- end -->
+              </ul>
+          </div>
+      </nav>
+  </nav>
+</div>
+@endsection
 
 @section('content')
     <style>

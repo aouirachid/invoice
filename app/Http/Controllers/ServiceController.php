@@ -50,26 +50,41 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Service $service)
+    public function show($serviceId)
     {
-        //
+        $singleserviceFromDB = Service::findOrfail($serviceId);
+        return view('services.show', ['service' => $singleserviceFromDB]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Service $service)
+    public function edit($service)
     {
-        //
+        $singleServiceFromDB = Service::findOrfail($service);
+        return view('services.edit', ['service' => $singleServiceFromDB]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request,$serviceId)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'min:3'],
+            'price' => ['required'],
+            'tva' => ['required'],
+        ]);
+        $service = Service::find($serviceId);
+        $service->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'tva' => $request->tva,
+        ]);
+    
+        return redirect()->route('services.index')->with('success', 'Service updated successfully.');
     }
+    
 
     /**
      * Remove the specified resource from storage.

@@ -383,7 +383,7 @@
                     <li class="item">
                         <div href="#" class="nav_link submenu_item">
                             <span class="navlink_icon">
-                                <i class="bx bx-user"></i>
+                                <i class="bx bx-group"></i>
                             </span>
                             <span class="navlink">Client</span>
                             <i class="bx bx-chevron-right arrow-left"></i>
@@ -412,8 +412,7 @@
                     </li>
                     <!-- end -->
                 </ul>
-{{-- 
-                <ul class="menu_items">
+                    {{--  <ul class="menu_items">
                     <div class="menu_title menu_editor"></div>
                     <!-- duplicate these li tag if you want to add or remove navlink only -->
                     <!-- Start -->
@@ -503,10 +502,11 @@
         </nav>
     </div>
     <!-- End of Sidebar Area -->
+    <!-- content -->
     <div class="content">
         @yield('content')
     </div>
-
+    <!-- end of content -->
     <script>
         const body = document.querySelector("body");
         const darkLight = document.querySelector("#darkLight");
