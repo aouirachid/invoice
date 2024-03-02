@@ -411,6 +411,26 @@
                         </ul>
                     </li>
                     <!-- end -->
+                    <hr>
+                    <!-- start -->
+                    <li class="item">
+                        <div href="#" class="nav_link submenu_item">
+                            <span class="navlink_icon">
+                                <i class='bx bxs-city'></i>
+                            </span>
+                            <span class="navlink">City</span>
+                            <i class="bx bx-chevron-right arrow-left"></i>
+                        </div>
+
+                        <ul class="menu_items submenu">
+                            <a href="{{ route('cities.create') }}" class="nav_link sublink">New City</a>
+                            <a href="{{ route('cities.index') }}" class="nav_link sublink">City List</a>
+                            <a href="{{ route('states.create') }}" class="nav_link sublink">New State</a>
+                            <a href="{{ route('states.index') }}" class="nav_link sublink">State List</a>
+                        </ul>
+                    </li>
+                    <!-- end -->
+                    
                 </ul>
                     {{--  <ul class="menu_items">
                     <div class="menu_title menu_editor"></div>
@@ -500,8 +520,9 @@
                 </div> --}}
             </div>
         </nav>
+        <!-- End of Sidebar Area -->
     </div>
-    <!-- End of Sidebar Area -->
+    
     <!-- content -->
     <div class="content">
         @yield('content')
